@@ -1,1 +1,7 @@
-<p>repository-list works!</p>
+<div class="container">
+  <div class="flex-container">
+    <mat-list *ngFor="let repo of repositories">
+      <app-repository-card [repository]="repo"></app-repository-card>
+    </mat-list>
+  </div>
+</div>

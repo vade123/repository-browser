@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{ this.repository.name }}</mat-card-title>
+    <mat-card-subtitle>{{ this.repository.language }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ this.repository.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-button href="{{ this.repository.html_url }}">Open on GitHub</a>
+  </mat-card-actions>
+</mat-card>
