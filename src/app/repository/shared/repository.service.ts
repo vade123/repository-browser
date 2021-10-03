@@ -8,6 +8,7 @@ import { Repository } from './repository.model';
 })
 export class RepositoryService {
   private baseUrl = 'https://api.github.com';
+
   constructor(private readonly http: HttpClient) {}
 
   getRepositories(): Observable<Repository[]> {

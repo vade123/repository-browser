@@ -1,4 +1,25 @@
-.card {
-  height: 150px;
-  width: 300px;
+mat-card {
+  height: 13rem;
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+mat-card-title {
+  max-width: 15rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

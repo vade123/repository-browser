@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Repository } from '../shared/repository.model';
 import { RepositoryService } from '../shared/repository.service';
 
@@ -8,15 +9,9 @@ import { RepositoryService } from '../shared/repository.service';
   styleUrls: ['./repository-list.component.scss'],
 })
 export class RepositoryListComponent {
-  repositories: Repository[] = [];
+  repositories$: Observable<Repository[]>;
 
   constructor(private repositoryService: RepositoryService) {
-    this.fetchRepositories();
-  }
-
-  fetchRepositories(): void {
-    this.repositoryService.getRepositories().subscribe((repos) => {
-      this.repositories = repos;
-    });
+    this.repositories$ = this.repositoryService.getRepositories();
   }
 }

@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>Repository Browser</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container [hasBackdrop]="false">
+  <mat-sidenav #sidenav mode="push" position="end"></mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
