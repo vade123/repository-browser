@@ -1,6 +1,6 @@
 # Repository Browser
 
-A simple web app to display a GitHub user's public repositories.
+A simple web app to display a GitHub user's public repositories deployed to [Github Pages](https://vade123.github.io/repository-browser/).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
 
@@ -15,7 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Display repositories of a GitHub user as simple card items
 - Change which user's repositories are displayed
 - Save latest user to localStorage
-- Preview repository's README
+- Preview repository's README as rendered Markdown
 
 The project also includes configations for ESLint and Prettier. The project is structured so further development would be as easy as possible.
 
