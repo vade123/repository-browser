@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { README } from '../shared/repository.model';
 import { RepositoryService } from '../shared/repository.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-repository-readme',
@@ -10,13 +11,20 @@ import { RepositoryService } from '../shared/repository.service';
   styleUrls: ['./repository-readme.component.scss'],
 })
 export class RepositoryReadmeComponent {
-  readme$: Observable<README>;
+  readme$: Observable<README | null>;
   content: any;
+  errorLoading$ = new Subject<boolean>();
+
   constructor(
     private repositoryService: RepositoryService,
     @Inject(MAT_DIALOG_DATA) public data: { user: string; repo: string }
   ) {
-    this.readme$ = this.repositoryService.getReadMe(data.user, data.repo);
+    this.readme$ = this.repositoryService.getReadMe(data.user, data.repo).pipe(
+      catchError((_) => {
+        this.errorLoading$.next(true);
+        return of(null);
+      })
+    );
   }
 
   // https://stackoverflow.com/a/30106551/13014753

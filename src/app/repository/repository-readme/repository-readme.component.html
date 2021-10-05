@@ -1,9 +1,10 @@
-<ng-template #loading>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</ng-template>
-
 <mat-dialog-content>
-  <div *ngIf="readme$ | async as readme; else loading">
+  <div *ngIf="readme$ | async as readme; else loadingOrError">
     <markdown emoji [data]="b64DecodeUnicode(readme.content)"></markdown>
   </div>
 </mat-dialog-content>
+
+<ng-template #loadingOrError>
+  <div *ngIf="this.errorLoading$ | async; else loading">README not found</div>
+  <ng-template #loading>Loading README...</ng-template>
+</ng-template>
