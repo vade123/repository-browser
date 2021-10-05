@@ -4,6 +4,6 @@
 
 <div class="flex-container" *ngIf="repositories$ | async as repositories; else loading">
   <mat-list *ngFor="let repo of repositories">
-    <app-repository-card [repository]="repo"></app-repository-card>
+    <app-repository-card [repository]="repo" [user]="this.user"></app-repository-card>
   </mat-list>
 </div>

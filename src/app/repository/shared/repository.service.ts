@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Repository } from './repository.model';
-import { UserService } from 'src/app/core/services/user.service';
+import { README, Repository } from './repository.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +9,22 @@ import { UserService } from 'src/app/core/services/user.service';
 export class RepositoryService {
   private baseUrl = 'https://api.github.com';
 
-  constructor(private readonly http: HttpClient) {}
+  private options = {};
 
-  getRepositories(username: string): Observable<Repository[]> {
-    const options = {
+  constructor(private readonly http: HttpClient) {
+    this.options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/vnd.github.v3+json',
         Accept: 'application/json',
       }),
     };
+  }
 
-    return this.http.get<Repository[]>(`${this.baseUrl}/users/${username}/repos`, options);
+  getRepositories(username: string): Observable<Repository[]> {
+    return this.http.get<Repository[]>(`${this.baseUrl}/users/${username}/repos`, this.options);
+  }
+
+  getReadMe(username: string, repository: string): Observable<README> {
+    return this.http.get<README>(`${this.baseUrl}/repos/${username}/${repository}/readme`, this.options);
   }
 }

@@ -1,16 +1,21 @@
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>{{ this.repository.name }}</mat-card-title>
+    <mat-card-title>{{ this.repository.name }} </mat-card-title>
     <mat-card-subtitle>{{ this.repository.language ? this.repository.language : '&nbsp;' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-divider inset></mat-divider>
   <mat-card-content>
-    <br />
     <p>
+      <i>{{ this.repository.fork ? 'This repository is a fork' : '' }}</i>
+      <br />
       {{ this.repository.description }}
     </p>
   </mat-card-content>
-  <mat-card-actions align="end">
-    <a mat-button href="{{ this.repository.html_url }}" target="_blank">Open on GitHub</a>
+  <mat-card-actions class="flex">
+    <button mat-button (click)="this.openDialog()">README</button>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="this.openLink(this.repository.html_url)">
+      <mat-icon>open_in_new</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

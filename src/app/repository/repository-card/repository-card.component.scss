@@ -18,9 +18,22 @@ mat-card-title {
   text-overflow: ellipsis;
 }
 
+mat-divider {
+  padding-bottom: 5px;
+}
+
 p {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
