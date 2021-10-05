@@ -20,5 +20,6 @@ import { MatDividerModule } from '@angular/material/divider';
     MatProgressBarModule,
     MatDividerModule,
   ],
+  exports: [RepositoryListComponent],
 })
 export class RepositoryModule {}

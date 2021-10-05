@@ -1,0 +1,14 @@
+<div class="container">
+  <p>Currently showcasing {{ this.user }}'s repositories</p>
+  <mat-form-field appearance="standard">
+    <mat-label>GitHub Username</mat-label>
+    <input matInput [formControl]="this.userControl" placeholder="{{ this.user }}" />
+    <mat-error *ngIf="this.userControl.hasError('notFound')"
+      >User '{{ this.userControl.value }}' does not exists</mat-error
+    >
+  </mat-form-field>
+  <div class="flex-container">
+    <span class="spacer"></span>
+    <button mat-button (click)="this.checkUser(this.userControl.value)">Save</button>
+  </div>
+</div>

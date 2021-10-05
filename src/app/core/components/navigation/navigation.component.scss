@@ -1,3 +1,12 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+mat-icon {
+  transition: 0.5s;
+  transform: rotate(0deg);
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}

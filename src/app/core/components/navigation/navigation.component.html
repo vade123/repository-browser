@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
-  <span>Repository Browser</span>
+  <span>{{ this.userService.user$ | async }}'s repositories</span>
   <span class="spacer"></span>
   <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>settings</mat-icon>
+    <mat-icon [@openClose]="sidenav.opened ? 'open' : 'closed'">settings</mat-icon>
   </button>
 </mat-toolbar>
-<mat-sidenav-container [hasBackdrop]="false">
-  <mat-sidenav #sidenav mode="push" position="end"></mat-sidenav>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" position="end"><app-settings></app-settings></mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
